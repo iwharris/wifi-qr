@@ -27,9 +27,9 @@ jobs:
                   name: Compile typescript
                   command: npm run compile
 
-            # - run:
-            #       name: Lint code
-            #       command: npm run prettier
+            - run:
+                  name: Lint code
+                  command: npm run prettier
 
             # - run:
             #       name: Run tests
