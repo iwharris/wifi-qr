@@ -4,7 +4,7 @@
     "description": "Command-line utility to generate QR codes for wifi access",
     "main": "dist/index.js",
     "bin": {
-        "wifi-qr": "node dist/index.js"
+        "wifi-qr": "./dist/cli.js"
     },
     "scripts": {
         "compile": "tsc -p .",
