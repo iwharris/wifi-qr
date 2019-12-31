@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 import commander from 'commander';
 import { readFileSync } from 'fs';
 import { createQRCode, WifiConfig } from './index';
