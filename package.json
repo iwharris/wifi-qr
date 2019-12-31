@@ -1,0 +1,47 @@
+{
+    "name": "wifi-qr",
+    "version": "0.0.1",
+    "description": "Command-line utility to generate QR codes for wifi access",
+    "main": "dist/index.js",
+    "bin": {
+        "wifi-qr": "node dist/index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iwharris/wifi-qr.git"
+    },
+    "keywords": [
+        "qr",
+        "wifi",
+        "authentication",
+        "access"
+    ],
+    "author": "Ian Harris",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iwharris/wifi-qr/issues"
+    },
+    "homepage": "https://github.com/iwharris/wifi-qr#readme",
+    "eslintConfig": {
+        "extends": "@iwharris/eslint-config"
+    },
+    "dependencies": {
+        "commander": "^4.0.1",
+        "qrcode": "^1.4.4"
+    },
+    "devDependencies": {
+        "@iwharris/eslint-config": "0.0.3",
+        "@iwharris/prettier-config": "0.0.3",
+        "@types/commander": "^2.12.2",
+        "@types/qrcode": "^1.3.4",
+        "@typescript-eslint/eslint-plugin": "^2.14.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "prettier": "^1.19.1",
+        "ts-node": "^8.5.4",
+        "typescript": "^3.7.4"
+    }
+}
