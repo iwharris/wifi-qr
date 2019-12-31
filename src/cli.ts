@@ -53,7 +53,6 @@ const getCommand = (): commander.Command => {
         )
         .option('-w, --width <width>', 'Width (in pixels) of the output image')
         .action((outputPath: string) => {
-            console.log('doing it ', outputPath);
             if (!outputPath) throw new Error('An output path must be provided!');
         });
 };
