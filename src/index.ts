@@ -32,7 +32,7 @@ export interface WifiConfig {
  * @param value
  */
 const escapeTagValue = (value: string): string => {
-    const n = (value || '').replace(/[\\\;\:\,]/g, '\\$&');
+    const n = value.replace(/[\\\;\:\,]/g, '\\$&');
     return n;
 };
 
@@ -71,18 +71,38 @@ export const encodeWifiConfig = (config: WifiConfig): string => {
     return `WIFI:${payload};;`;
 };
 
-export const createQRCode = (config: WifiConfig, qrOptions?: QRCode.QRCodeOptions): WifiQRCode => {
+/**
+ * Create a QRCode wrapper that can export the QR code data in various formats.
+ *
+ * @param config
+ * @param qrOptions
+ */
+export const createQRCode = (
+    config: WifiConfig,
+    qrOptions?: QRCode.QRCodeOptions
+): WifiQRWrapper => {
     const code = QRCode.create(encodeWifiConfig(config), qrOptions || {});
-    return new WifiQRCode(code);
+    return new WifiQRWrapper(code);
 };
 
-class WifiQRCode {
-    private code: QRCode.QRCode;
+/**
+ * Wrapper around a QRCode that can export the code to multiple destinations.
+ */
+class WifiQRWrapper {
+    public readonly code: QRCode.QRCode;
 
     constructor(qrCode: QRCode.QRCode) {
         this.code = qrCode;
     }
 
+    /**
+     * Writes the QRCode to an HTML Canvas.
+     *
+     * @param element
+     * @param opts
+     *
+     * @returns a Promise that resolves once the canvas is updated
+     */
     async toHtmlCanvas(
         element: HTMLCanvasElement,
         opts?: QRCode.QRCodeRenderersOptions
@@ -90,11 +110,27 @@ class WifiQRCode {
         return QRCode.toCanvas(element, this.code.segments, opts);
     }
 
+    /**
+     * Writes the QRCode to a file.
+     *
+     * @param path
+     * @param opts
+     *
+     * @returns a Promise that resolves once the file is written
+     */
     async toFile(path: string, opts?: QRCode.QRCodeToFileOptions): Promise<any> {
         return QRCode.toFile(path, this.code.segments, opts);
     }
 
-    async toFileStream(stream: Writable, opts?: QRCode.QRCodeToFileStreamOptions): Promise<any> {
+    /**
+     * Writes the QRCode in PNG format to a writable stream.
+     *
+     * @param stream
+     * @param opts
+     *
+     * @returns a Promise that resolves once the stream is complete
+     */
+    async toPngStream(stream: Writable, opts?: QRCode.QRCodeToFileStreamOptions): Promise<any> {
         return QRCode.toFileStream(stream, this.code.segments, opts);
     }
 }
