@@ -39,7 +39,7 @@ jobs:
                   path: coverage/lcov-report
                   destination: coverage
 
-            upload coverage report
+            # upload coverage report
             - run: curl -s https://codecov.io/bash | bash -s -- -t "${CODECOV_TOKEN}"
 
             - save_cache:
