@@ -136,5 +136,27 @@ describe('index', () => {
 
             stub.mockRestore();
         });
+
+        it('should export a data URI', async () => {
+            const testUri = 'fake/uri';
+
+            const stub = jest
+                .spyOn(QRCode, 'toDataURL')
+                .mockImplementation(() => Promise.resolve(testUri));
+            const options: QRCode.QRCodeToDataURLOptions = {
+                width: 123,
+                type: 'image/png',
+            };
+            const wrapper = createQRCode(config);
+
+            const promise = wrapper.toDataUrl(options);
+
+            await expect(promise).resolves.toBe(testUri);
+
+            expect(stub).toBeCalledTimes(1);
+            expect(stub).toBeCalledWith(wrapper.code.segments, options);
+
+            stub.mockRestore();
+        });
     });
 });

@@ -133,4 +133,13 @@ class WifiQRWrapper {
     async toPngStream(stream: Writable, opts?: QRCode.QRCodeToFileStreamOptions): Promise<any> {
         return QRCode.toFileStream(stream, this.code.segments, opts);
     }
+
+    /**
+     * Gets a data URI that allows retrieval of the QR code.
+     *
+     * @param opts
+     */
+    async toDataUrl(opts?: QRCode.QRCodeToDataURLOptions): Promise<string> {
+        return QRCode.toDataURL(this.code.segments, opts);
+    }
 }
