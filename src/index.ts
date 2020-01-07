@@ -138,6 +138,8 @@ class WifiQRWrapper {
      * Gets a data URI that allows retrieval of the QR code.
      *
      * @param opts
+     *
+     * @returns a Promise that resolves once the data URI is generated
      */
     async toDataUrl(opts?: QRCode.QRCodeToDataURLOptions): Promise<string> {
         return QRCode.toDataURL(this.code.segments, opts);
