@@ -7,7 +7,7 @@ module.exports = {
     moduleFileExtensions: ['ts', 'js'],
     globals: {
         'ts-jest': {
-            tsConfig: {
+            tsconfig: {
                 importHelpers: true,
             },
         },
