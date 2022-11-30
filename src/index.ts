@@ -26,6 +26,8 @@ export interface WifiConfig {
     hidden?: boolean;
 }
 
+export type QRCodeOptions = QRCode.QRCodeOptions;
+
 /**
  * Escape a tag value. Special characters are `,`, `\`, `;`, and `:` and will be prefixed by a backslash.
  *
@@ -79,7 +81,7 @@ export const encodeWifiConfig = (config: WifiConfig): string => {
  */
 export const createQRCode = (
     config: WifiConfig,
-    qrOptions?: QRCode.QRCodeOptions
+    qrOptions?: QRCodeOptions
 ): WifiQRWrapper => {
     const code = QRCode.create(encodeWifiConfig(config), qrOptions || {});
     return new WifiQRWrapper(code);
