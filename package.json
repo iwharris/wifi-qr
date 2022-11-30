@@ -1,6 +1,6 @@
 {
     "name": "wifi-qr",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Command-line utility to generate QR codes for wifi access",
     "main": "dist/index.js",
     "bin": {
