@@ -79,10 +79,7 @@ export const encodeWifiConfig = (config: WifiConfig): string => {
  * @param config
  * @param qrOptions
  */
-export const createQRCode = (
-    config: WifiConfig,
-    qrOptions?: QRCodeOptions
-): WifiQRWrapper => {
+export const createQRCode = (config: WifiConfig, qrOptions?: QRCodeOptions): WifiQRWrapper => {
     const code = QRCode.create(encodeWifiConfig(config), qrOptions || {});
     return new WifiQRWrapper(code);
 };
