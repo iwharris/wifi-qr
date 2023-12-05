@@ -2,6 +2,10 @@
 
 A library and command-line utility for generating QR codes with embedded wifi credentials
 
+## Demo
+
+https://iwharris.github.io/wifi-qr-web
+
 ## Background
 
 Wifi QR codes are readable by iOS 11+ and Android 10+ devices. The QR codes embed the network SSID, auth type, and password, making it easy to share credentials with guests, for example. Long passwords can be deployed and shared easily with this method.
